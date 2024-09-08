@@ -2,7 +2,6 @@ import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import List from "@/models/List";
 import list from "@/routes/list";
 import user from "@/routes/user";
 
