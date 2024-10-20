@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import list from "@/routes/list";
 import user from "@/routes/user";
+import { default as PublicRouter } from "@/routes/public";
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ const uri: string =
 
 app.use("/list", list);
 app.use("/user", user);
+app.use("/public", PublicRouter);
 
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).send("Server is running");

@@ -6,6 +6,7 @@ const listSchema = new Schema({
   user_id: Schema.Types.ObjectId,
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
+  date: Date,
   _id: Schema.Types.ObjectId,
   description: String,
 });
