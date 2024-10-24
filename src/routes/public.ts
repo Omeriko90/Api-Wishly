@@ -15,21 +15,21 @@ router.put("/wish/:id/select", async (req: Request, res: Response) => {
     },
     { new: true }
   );
-  res.status(200).send(wish);
+  return res.status(200).send(wish);
 });
 
 router.get("/list/:id", async (req: Request, res: Response) => {
   const listId = req.params.id;
   const list = await List.findById(new Types.ObjectId(listId));
 
-  res.status(200).send(list);
+  return res.status(200).send(list);
 });
 
 router.get("/list/:id/wishes", async (req: Request, res: Response) => {
   const listId = req.params.id;
   const list = await Wish.find({ listId: new Types.ObjectId(listId) });
 
-  res.status(200).send(list);
+  return res.status(200).send(list);
 });
 
 export default router;

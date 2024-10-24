@@ -18,20 +18,20 @@ router.post("/", async (req: Request, res: Response) => {
     description,
   });
 
-  res.status(201).send(newList);
+  return res.status(201).send(newList);
 });
 
 router.get("/:id", async (req: Request, res: Response) => {
   const listId = req.params.id;
   const list = await List.findById(new Types.ObjectId(listId));
 
-  res.status(200).send(list);
+  return res.status(200).send(list);
 });
 router.get("/:id/wishes", async (req: Request, res: Response) => {
   const listId = req.params.id;
   const list = await Wish.find({ listId: new Types.ObjectId(listId) });
 
-  res.status(200).send(list);
+  return res.status(200).send(list);
 });
 router.put("/:id/wishes", async (req: Request, res: Response) => {
   const listId = req.params.id;
@@ -57,7 +57,7 @@ router.put("/:id/wishes", async (req: Request, res: Response) => {
     }
   });
   const wishesObj = await Promise.all(promises);
-  res.status(200).send(wishesObj);
+  return res.status(200).send(wishesObj);
 });
 
 router.put("/:id", async (req: Request, res: Response) => {
@@ -69,7 +69,7 @@ router.put("/:id", async (req: Request, res: Response) => {
     { new: true }
   );
 
-  res.status(200).send(updateList);
+  return res.status(200).send(updateList);
 });
 
 export default router;
