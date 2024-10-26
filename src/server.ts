@@ -5,13 +5,14 @@ import dotenv from "dotenv";
 import list from "@/routes/list";
 import user from "@/routes/user";
 import { default as PublicRouter } from "@/routes/public";
-
+import bodyParser from "body-parser";
 dotenv.config();
 
 const app: Express = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 const uri: string =
@@ -30,6 +31,7 @@ const uri: string =
 app.use("/list", list);
 app.use("/user", user);
 app.use("/public", PublicRouter);
+app.get("*", (_req: Request, res: Response) => res.redirect("/"));
 
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).send("Server is running");
