@@ -31,7 +31,7 @@ const uri: string =
 app.use("/list", list);
 app.use("/user", user);
 app.use("/public", PublicRouter);
-app.get("*", (_req: Request, res: Response) => res.redirect("/"));
+app.get("/*", (_req: Request, res: Response) => res.redirect("/index.html"));
 
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).send("Server is running");
