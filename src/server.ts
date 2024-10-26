@@ -6,6 +6,7 @@ import list from "@/routes/list";
 import user from "@/routes/user";
 import { default as PublicRouter } from "@/routes/public";
 import bodyParser from "body-parser";
+import path from "path";
 dotenv.config();
 
 const app: Express = express();
@@ -31,7 +32,9 @@ const uri: string =
 app.use("/list", list);
 app.use("/user", user);
 app.use("/public", PublicRouter);
-app.get("/*", (_req: Request, res: Response) => res.redirect("/index.html"));
+app.get("/*", (_req: Request, res: Response) =>
+  res.sendFile(path.join(__dirname, "index.html"))
+);
 
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).send("Server is running");
