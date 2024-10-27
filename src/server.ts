@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 const uri: string =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://omerdomb51:<Yarden5190!>@mygiftlistdb.tdwi6xc.mongodb.net/";
+  // process.env.MONGODB_URI ||
+  "mongodb+srv://omerdomb51:hMqxRHI73h38ta2S@mygiftlistdb.tdwi6xc.mongodb.net/";
 
 (async () => {
   try {
@@ -32,9 +32,7 @@ const uri: string =
 app.use("/list", list);
 app.use("/user", user);
 app.use("/public", PublicRouter);
-app.get("/*", (_req: Request, res: Response) =>
-  res.sendFile(path.join(__dirname, "index.html"))
-);
+app.get("/*", (_req: Request, res: Response) => res.status(200).redirect("/"));
 
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).send("Server is running");
